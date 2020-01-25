@@ -10,7 +10,13 @@ def main():
 
 @app.route("/from/<direction>")
 def from_direction(direction):
-    return render_template('direction.html', direction=direction)
+    direction_tours = dict()
+    for tour_id,tour in data.tours.items():
+        if tour.get("departure") == direction:
+            direction_tours[tour_id] = tour
+
+    direction_tours.values()
+    return render_template('direction.html', direction = data.departures.get(direction), tours = direction_tours)
 
 
 @app.route("/tours/<tour_id>")
@@ -19,5 +25,4 @@ def tours(tour_id):
 
 
 app.run(port=8000)
-app.debug(True)
 
