@@ -36,6 +36,6 @@ def tours(id):
     departures = data.departures,
     tour = tour)
 
-
-app.run(port=8000)
+if __name__ == '__main__':
+    app.run(port=8000)
 
